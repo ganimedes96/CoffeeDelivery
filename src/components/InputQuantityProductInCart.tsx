@@ -1,36 +1,31 @@
 import { Minus, Plus } from "phosphor-react";
+import { FormEvent } from "react";
 
 interface InputAmountProductsProps {
-  min?: number;
-  count?: number;
-  setCount(count: number): void;
+  quantityCoffee: number;
+  onIncrease: (event: FormEvent) => void
+  onDecrease: (event: FormEvent) => void
 }
 
 export const InputQuantityProductInCart = ({
-  count = 0,
-  setCount,
-  min = 0,
+    quantityCoffee,
+    onIncrease,
+    onDecrease,
 }: InputAmountProductsProps) => {
-    const handleClickIncrement = () => {
-        setCount( count + 1 );
-    }
-
-    const handleClickDecrement = () => {
-        setCount( count - 1 );
-    }
+   
     return (
         <>
             <button 
-                className="text-blue-500 text-xl"
-                onClick={handleClickDecrement}
-                disabled={count === min}
+                className="text-blue-500 text-xl py-[.5rem]"
+                onClick={onIncrease}
+                disabled={quantityCoffee <= 1}
             > 
                 <Minus size={14}/>
              </button>
-            <span>{count}</span>
+            <span>{quantityCoffee}</span>
             <button 
                 className="text-blue-500 text-xl"
-                onClick={handleClickIncrement}
+                onClick={onDecrease}
             >
                 <Plus size={14}/>
             </button>
