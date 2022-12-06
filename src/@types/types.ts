@@ -5,14 +5,15 @@ export enum PaymentMethodTypes {
     NONE = "none",
   }
   
-  export interface Address {
-    cep: string;
-    rua: string;
-    numero: string;
-    complemento?: string | undefined;
-    cidade: string;
-    bairro: string;
+  export interface IAddressInfo {
+    cep: number;
+    address: string;
+    number: number;
+    complement?: string | undefined;
+    city: string;
+    district: string;
     uf: string;
+    type: string;
   }
   
   type Categories =
@@ -38,13 +39,4 @@ export enum PaymentMethodTypes {
     count: number;
   }
   
-  export interface PurchaseInformation {
-    address: Address;
-    PaymentMethod: PaymentMethodTypes;
-  }
-  
-  interface CartState {
-    products: Product[];
-    cartProducts: CartProduct[];
-    purchaseInformation: PurchaseInformation;
-  }
+

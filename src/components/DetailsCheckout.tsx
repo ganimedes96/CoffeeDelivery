@@ -40,7 +40,7 @@ export const DetailsCheckout = () => {
             <strong>Total</strong>
             <strong>R$ {formattedTotalPrice}</strong>
           </div>
-          <button className="w-full p-3 rounded-md bg-yellow-300 text-gray-100">
+          <button type='submit' className="w-full p-3 rounded-md bg-yellow-300 text-gray-100">
             CONFIRMAR PEDIDO
           </button>
         </div>

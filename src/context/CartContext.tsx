@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { produce } from "immer";
-import { Product } from "../@types/types";
+import { Product, IAddressInfo } from "../@types/types";
 
 import { api } from "../services/api";
 
@@ -20,14 +20,16 @@ export interface OrdersCartProps extends Product {
 interface CartContextData {
   menu: Product[];
   handleTotalItemsOnCart: number;
-  addCoffeeToCart: (coffee: OrdersCartProps) => void;
   cartOrdersTotalPrice: number;
+  checkoutInfo: IAddressInfo | null;
   handleQuantityProductInCart: (
     coffeeId: number,
     type: "increase" | "decrease"
   ) => void;
+  addCoffeeToCart: (coffee: OrdersCartProps) => void;
   coffeeToCart: OrdersCartProps[];
   removeCoffeeFromCart: (coffeeId: number) => void;
+  handleCheckoutInfo: (data: IAddressInfo) => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -35,6 +37,7 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 export function CartProvider({ children }: CartProviderProps) {
   const [menu, setMenu] = useState<OrdersCartProps[]>([]);
   const [coffeeToCart, setCoffeeToCart] = useState<OrdersCartProps[]>([]);
+  const [checkoutInfo, setCheckoutInfo] = useState<IAddressInfo | null>(null);
   useEffect(() => {
     api.get("catalog").then((response) => {
       setMenu(response.data);
@@ -93,6 +96,11 @@ export function CartProvider({ children }: CartProviderProps) {
     setCoffeeToCart(findCoffee);
   };
 
+  const handleCheckoutInfo = (data: IAddressInfo) => {
+    setCheckoutInfo(data);
+    setCoffeeToCart([])
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -100,9 +108,11 @@ export function CartProvider({ children }: CartProviderProps) {
         handleTotalItemsOnCart,
         cartOrdersTotalPrice,
         coffeeToCart,
+        checkoutInfo,
         handleQuantityProductInCart,
         addCoffeeToCart,
         removeCoffeeFromCart,
+        handleCheckoutInfo,
       }}
     >
       {children}

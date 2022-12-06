@@ -10,6 +10,8 @@
     "server": "json-server coffeeServer.json -p 3000"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
+    "@radix-ui/react-radio-group": "^1.1.0",
     "axios": "^0.27.2",
     "immer": "^9.0.15",
     "phosphor-react": "^1.4.1",
@@ -17,7 +19,9 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
     "react-router-dom": "^6.3.0",
-    "react-toastify": "^9.0.8"
+    "react-toastify": "^9.0.8",
+    "sass": "^1.56.1",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

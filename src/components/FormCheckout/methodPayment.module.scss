@@ -1,0 +1,17 @@
+.buttonRadio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: .5rem;
+      
+    
+    &[data-state="checked"] {
+        background-color: #8284FA;   
+        color: #fff;
+
+    }
+}
+
+
+// flex items-center justify-center gap-2 border-2 border-violet-400 rounded p-2

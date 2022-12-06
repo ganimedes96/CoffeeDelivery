@@ -57,16 +57,3 @@ export const PaymentMethod = ({
     </div>
   );
 };
-
-// <button className="flex items-center justify-center p-2 bg-gray-100 rounded-md gap-2 w-[178px]">
-//   <img src="../../public/assets/card.svg" alt="cartao" />
-//   <span>Cartão de crédito</span>
-// </button>
-// <button className="flex items-center justify-center  p-2 bg-gray-100 rounded-md gap-2 w-[178px]">
-//   <img src="../../public/assets/debit.svg" alt="Debito" />
-//   <span>cartão de débito</span>
-// </button>
-// <button className="flex items-center justify-center  p-2 bg-gray-100 rounded-md gap-2 w-[178px]">
-//   <img src="../../public/assets/money.svg" alt="cedula" />
-//   <span>dinheiro</span>
-// </button>
